@@ -1,15 +1,14 @@
 from django.core.mail import send_mail
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render , reverse
 from django.http import HttpResponse
 from django.views import generic
 from .models import Agent, Lead
-from .forms import LeadForm ,LeadModelForm
+from .forms import LeadForm ,LeadModelForm,CustomUserCreationForm
 
 # Create your views here.
 class SignupView(generic.CreateView):
     template_name = "registration/signup.html"
-    form_class=UserCreationForm
+    form_class=CustomUserCreationForm
 
     def get_success_url(self):
         return reverse("login")
